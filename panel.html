@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>轻写 · 云平台填写助手</title>
+  <script src="panel-mode.js"></script>
+  <link rel="stylesheet" href="panel.css">
+  <script src="core.js" defer></script>
+  <script src="panel.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m15 4 5 5-10 10-6 1 1-6zM13 6l5 5M4 4h5M4 8h2"/></svg></div>
+      <div><h1>轻写<span>TOOLBOX</span></h1><p>把重复输入，交给轻写。</p></div>
+      <button class="icon-button" id="open-settings" title="打开设置" aria-label="打开设置"></button>
+    </header>
+    <div class="connection"><span class="dot" id="connection-dot"></span><span id="connection-text">正在连接当前页面…</span><button id="focus-page" title="返回正在填写的网页" hidden>返回网页 ↗</button><button id="refresh" title="重新识别页面" aria-label="重新识别页面"></button></div>
+    <div id="workspace" class="workspace">
+      <aside class="sidebar"><div class="rail-heading">LINODE <span>01—05</span></div><nav id="steps" aria-label="Linode 填写步骤"></nav><div class="rail-note"><span>LOCAL FIRST</span>资料留在本机<br>按需逐项填写</div></aside>
+      <main id="main" tabindex="-1"></main>
+    </div>
+    <section id="task-area" class="task-area" aria-label="填写控制">
+      <div class="task-top"><span id="task-message" role="status" aria-live="polite">准备就绪</span><span id="task-count">0 / 0</span></div>
+      <div class="progress"><div id="progress-bar"></div></div>
+      <div class="actions"><button class="primary" id="start"></button><button class="secondary" id="pause" hidden>暂停</button><button class="stop" id="stop" hidden>停止</button></div>
+      <div class="task-foot"><span id="speed-summary"></span><span>填写后由你确认提交</span></div>
+    </section>
+    <nav class="platforms" id="platforms" aria-label="平台和设置"></nav>
+  </div>
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "轻写 · 云平台填写助手",
+  "version": "1.7.0",
+  "description": "点击工具栏图标展开填写工具，按可调速度逐字填写 Linode 与 Oracle Cloud 表单。",
+  "minimum_chrome_version": "116",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["https://login.linode.com/*", "https://signup.cloud.oracle.com/*", "https://shop.oracle.com/*"],
+  "background": {"service_worker": "background.js"},
+  "action": {"default_title": "打开轻写工具栏弹窗", "default_popup": "panel.html?popup=1", "default_icon": {"16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png"}},
+  "icons": {"16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png"},
+  "options_page": "panel.html#settings",
+  "content_scripts": [{
+    "matches": ["https://login.linode.com/*"],
+    "js": ["core.js", "content.js"],
+    "run_at": "document_idle"
+  }, {
+    "matches": ["https://signup.cloud.oracle.com/*", "https://shop.oracle.com/*"],
+    "js": ["core.js", "content.js"],
+    "run_at": "document_idle",
+    "all_frames": true
+  }],
+  "content_security_policy": {"extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'"}
+}
